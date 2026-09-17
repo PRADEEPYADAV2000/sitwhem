@@ -3,143 +3,13 @@
    Vintage Streetwear × Fashion Editorial
    ============================================ */
 
-/* --- Product Data --- */
-const products = [
-  {
-    id: 1,
-    name: "FILA Navy Piped Track Pants",
-    brand: "FILA",
-    price: 899,
-    mrp: 1499,
-    image: "1.jpeg",
-    description: "Classic navy track pants with piped detailing. Authentic vintage piece in excellent condition.",
-    sizes: ["XS", "S", "M", "L", "XL"],
-    tags: ["trackwear"]
-  },
-  {
-    id: 2,
-    name: "Nike Black Snap-Button Tearaway Pants",
-    brand: "Nike",
-    price: 1099,
-    mrp: 1999,
-    image: "2.jpeg",
-    description: "Iconic 90s Nike tearaway pants with snap buttons down both legs. A rare collector piece.",
-    sizes: ["S", "M", "L", "XL"],
-    tags: ["trackwear", "sports"]
-  },
-  {
-    id: 3,
-    name: "Puma Navy Sky-Blue Stripe Track Pants",
-    brand: "Puma",
-    price: 999,
-    mrp: 1699,
-    image: "3.jpeg",
-    description: "Vintage Puma track pants with distinctive triple sky-blue stripe pattern. Elasticated ankle cuffs.",
-    sizes: ["XS", "S", "M", "L"],
-    tags: ["trackwear"]
-  },
-  {
-    id: 4,
-    name: "Nike Navy Panel Track Pants",
-    brand: "Nike",
-    price: 899,
-    mrp: 1499,
-    image: "4.jpeg",
-    description: "Navy panel design track pants with white side panel. A staple from the golden era of sportswear.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    tags: ["trackwear", "sports"]
-  },
-  {
-    id: 5,
-    name: "Nike Athletic Grid-Panel Track Pants",
-    brand: "Nike",
-    price: 999,
-    mrp: 1799,
-    image: "5.jpeg",
-    description: "Grid-panel athletic track pants with reflective side panel. Authentic Nike Athletic Division vintage.",
-    sizes: ["M", "L", "XL"],
-    tags: ["trackwear", "sports"]
-  },
-  {
-    id: 6,
-    name: "Vintage Color-Block Racer Track Pants",
-    brand: "Vintage",
-    price: 1099,
-    mrp: 1899,
-    image: "6.jpeg",
-    description: "Rare color-block racer pants in navy, khaki and burgundy with contrast stitching. A true statement piece.",
-    sizes: ["XS", "S", "M", "L"],
-    tags: ["trackwear", "vintage"]
-  },
-  {
-    id: 7,
-    name: "Nike Navy Red-Stripe Track Shorts",
-    brand: "Nike",
-    price: 799,
-    mrp: 1299,
-    image: "7.jpeg",
-    description: "Vintage Nike shorts with bold red side stripe and embroidered Swoosh. Summer ready.",
-    sizes: ["S", "M", "L", "XL"],
-    tags: ["trackwear", "sports"]
-  },
-  {
-    id: 8,
-    name: "Jordan Training Tee",
-    brand: "Jordan",
-    price: 849,
-    mrp: 1399,
-    image: "t1.jpeg",
-    description: "Authentic Jordan Brand training tee in cool grey with pink Jumpman logo. Lightweight performance fabric, vintage condition.",
-    sizes: ["S", "M", "L", "XL"],
-    tags: ["tshirts", "sports"]
-  },
-  {
-    id: 9,
-    name: "Nike Vintage Crewneck Sweatshirt",
-    brand: "Nike",
-    price: 1099,
-    mrp: 1799,
-    image: "t2.jpeg",
-    description: "Rare Nike magenta crewneck with embroidered Swoosh. Heavy cotton fleece, faded vintage wash — a genuine 90s classic.",
-    sizes: ["XS", "S", "M", "L"],
-    tags: ["tshirts", "sports"]
-  },
-  {
-    id: 10,
-    name: "Carhartt Olive Sherpa Lined Jacket",
-    brand: "Carhartt",
-    price: 1099,
-    mrp: 2499,
-    image: "j1.png",
-    description: "Premium Carhartt olive hooded jacket with warm sherpa lining. Full zip, cargo pockets, drawcord hem. A workwear icon reborn as streetwear.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    tags: ["jackets", "outdoor"]
-  },
-  // [AI GENERATED CODE]
-  {
-    id: 11,
-    name: "Vintage Dark Brown Leather Jacket",
-    brand: "Vintage",
-    price: 1099,
-    mrp: 2999,
-    image: "J2.png",
-    description: "Clean-cut dark brown leather moto jacket with minimal zip detail. Slim silhouette, snap pockets, full-grain leather. A timeless layer for any fit.",
-    sizes: ["S", "M", "L", "XL"],
-    tags: ["jackets", "leather"]
-  },
-  // [AI GENERATED CODE]
-  {
-    id: 12,
-    name: "Grey Bomber Jacket",
-    brand: "Vintage",
-    price: 899,
-    mrp: 1999,
-    image: "J3.png",
-    description: "Lightweight grey bomber with black ribbed collar, cuffs and hem. Dual zip pockets, clean street-ready silhouette. Easy layering for every season.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    tags: ["jackets", "bomber"]
-  }
-];
+// [AI GENERATED CODE] — build products from products.js + apply stock from stock.js
+const products = PRODUCTS.map(function(p) {
+  return Object.assign({}, p, {
+    tags: [p.section],
+    inStock: STOCK[p.id] !== false,
+  });
+});
 
 /* --- State --- */
 let cart = [];
@@ -152,6 +22,7 @@ let selectedSize = null;
 document.addEventListener('DOMContentLoaded', function () {
   renderNewArrivals();
   renderBestSellers();
+  renderTrackwear();
   renderTshirts();
   renderJackets();
   renderCommunity();
@@ -164,16 +35,28 @@ document.addEventListener('DOMContentLoaded', function () {
    RENDER FUNCTIONS
    ============================================ */
 
+// [AI GENERATED CODE] — renders products listed in NEW_ARRIVALS array from featured.js
 function renderNewArrivals() {
   const grid = document.getElementById('newArrivalsGrid');
   if (!grid) return;
-  grid.innerHTML = products.slice(0, 4).map(createProductCard).join('');
+  const items = NEW_ARRIVALS.map(id => products.find(p => p.id === id)).filter(Boolean);
+  grid.innerHTML = items.map(createProductCard).join('');
 }
 
+// [AI GENERATED CODE] — renders products listed in BEST_SELLERS array from featured.js
 function renderBestSellers() {
   const grid = document.getElementById('bestSellersGrid');
   if (!grid) return;
-  grid.innerHTML = products.slice(4, 7).map(createProductCard).join('');
+  const items = BEST_SELLERS.map(id => products.find(p => p.id === id)).filter(Boolean);
+  grid.innerHTML = items.map(createProductCard).join('');
+}
+
+// [AI GENERATED CODE] — all trackwear products
+function renderTrackwear() {
+  const grid = document.getElementById('trackwearGrid');
+  if (!grid) return;
+  const items = products.filter(p => p.tags.includes('trackwear'));
+  grid.innerHTML = items.map(createProductCard).join('');
 }
 
 function renderTshirts() {
@@ -218,21 +101,27 @@ function renderCommunity() {
    PRODUCT CARD
    ============================================ */
 
+// [AI GENERATED CODE] — renders product card with sold-out state support
 function createProductCard(product) {
   const discount = Math.round(((product.mrp - product.price) / product.mrp) * 100);
+  const soldOut = !product.inStock;
   return `
-    <div class="product-card" data-id="${product.id}">
-      <div class="product-image" onclick="openModal(${product.id})">
+    <div class="product-card ${soldOut ? 'sold-out' : ''}" data-id="${product.id}">
+      <div class="product-image" onclick="${soldOut ? '' : `openModal(${product.id})`}" style="${soldOut ? 'cursor:default' : ''}">
         <img src="${product.image}" alt="${product.name}" loading="lazy">
+        ${soldOut ? '<div class="sold-out-badge">SOLD OUT</div>' : ''}
       </div>
       <div class="product-brand">${product.brand}</div>
-      <div class="product-name" onclick="openModal(${product.id})">${product.name}</div>
+      <div class="product-name" onclick="${soldOut ? '' : `openModal(${product.id})`}" style="${soldOut ? 'cursor:default' : ''}">${product.name}</div>
       <div class="product-price">
         ₹${product.price.toLocaleString('en-IN')}
         <span style="font-size:12px;color:var(--ink-muted);text-decoration:line-through;font-weight:400;margin-left:6px">₹${product.mrp.toLocaleString('en-IN')}</span>
-        <span style="font-size:10px;font-weight:700;color:var(--green);margin-left:4px">${discount}% OFF</span>
+        ${soldOut ? '' : `<span style="font-size:10px;font-weight:700;color:var(--green);margin-left:4px">${discount}% OFF</span>`}
       </div>
-      <div class="product-add" onclick="quickAddToCart(${product.id})">+ ADD TO CART</div>
+      ${soldOut
+        ? '<div class="product-add product-sold-out-label">SOLD OUT</div>'
+        : `<div class="product-add" onclick="quickAddToCart(${product.id})">+ ADD TO CART</div>`
+      }
     </div>
   `;
 }
@@ -244,6 +133,7 @@ function createProductCard(product) {
 function quickAddToCart(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
+  if (!product.inStock) { showToast('This item is sold out'); return; }
   const size = product.sizes[0];
   const existing = cart.find(i => i.id === productId && i.size === size);
   if (existing) {
@@ -257,6 +147,7 @@ function quickAddToCart(productId) {
 
 function addToCartFromModal() {
   if (!selectedProduct) return;
+  if (!selectedProduct.inStock) { showToast('This item is sold out'); return; }
   if (!selectedSize) {
     showToast('Please select a size first');
     return;

@@ -26,7 +26,7 @@
         <li>
           <a href="#categories">Categories</a>
           <div class="dropdown">
-            <a href="#arrivals">Trackwear</a>
+            <a href="#trackwear">Trackwear</a>
             <a href="#tshirts">T-Shirts &amp; Sweatshirts</a>
             <a href="#jackets">Jackets</a>
             <a href="#arrivals">Sports Heritage</a>
@@ -76,7 +76,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
     <a href="#shop" onclick="document.getElementById('mobileMenu').classList.remove('active')">Shop</a>
-    <a href="#arrivals" onclick="document.getElementById('mobileMenu').classList.remove('active')">Trackwear</a>
+    <a href="#trackwear" onclick="document.getElementById('mobileMenu').classList.remove('active')">Trackwear</a>
     <a href="#tshirts" onclick="document.getElementById('mobileMenu').classList.remove('active')">T-Shirts &amp; Sweatshirts</a>
     <a href="#jackets" onclick="document.getElementById('mobileMenu').classList.remove('active')">Jackets</a>
     <a href="#arrivals" onclick="document.getElementById('mobileMenu').classList.remove('active')">Sports Heritage</a>
@@ -93,7 +93,7 @@
       <div class="eyebrow hero-eyebrow">SITWHEM / SS2024</div>
       <h1>
         <span class="line">THE PAST.</span>
-        <span class="line">REWORN.</span>
+        <span class="line" style="color:var(--rust);-webkit-text-stroke:1.5px var(--ink)">REWORN.</span>
       </h1>
       <p class="hero-subtext">Curated vintage & pre-owned streetwear from the eras that mattered.</p>
       <div class="hero-ctas">
@@ -138,7 +138,7 @@
   <section class="new-arrivals" id="arrivals">
     <div class="section-header reveal">
       <div class="eyebrow">— JUST IN</div>
-      <h2>NEW ARRIVALS</h2>
+      <h2><span class="why-word">NEW</span> <span class="why-brand">ARRIVALS</span></h2>
     </div>
     <div class="product-grid" id="newArrivalsGrid"></div>
     <div style="text-align: center;">
@@ -153,7 +153,7 @@
     </div>
     <div class="archive-right reveal">
       <div class="eyebrow" style="color: var(--cream);">THE COLLECTION</div>
-      <h2>90s SPORTS ARCHIVE</h2>
+      <h2 style="color:var(--rust);-webkit-text-stroke:1.5px var(--ink)">90s SPORTS ARCHIVE</h2>
       <p>Rare finds from the golden era of sports fashion — Nike, Puma, FILA and more. Every piece authenticated and curated by hand.</p>
       <button class="btn btn-white" onclick="scrollToSection('allProducts')">EXPLORE COLLECTION</button>
     </div>
@@ -166,13 +166,13 @@
       <h2>CATEGORY</h2>
     </div>
     <div class="category-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
-      <div class="category-tile reveal reveal-delay-1" onclick="scrollToSection('arrivals')" style="cursor:pointer">
+      <div class="category-tile reveal reveal-delay-1" onclick="scrollToSection('trackwear')" style="cursor:pointer">
         <img src="1.jpeg" alt="Trackwear">
         <div class="category-overlay">
           <div class="category-name">TRACKWEAR</div>
         </div>
       </div>
-      <div class="category-tile reveal reveal-delay-2" onclick="scrollToSection('arrivals')" style="cursor:pointer">
+      <div class="category-tile reveal reveal-delay-2" onclick="scrollToSection('trackwear')" style="cursor:pointer">
         <img src="4.jpeg" alt="Sports Heritage">
         <div class="category-overlay">
           <div class="category-name">SPORTS</div>
@@ -219,7 +219,7 @@
   <section class="shop-brand">
     <div class="section-header reveal">
       <div class="eyebrow">EXPLORE</div>
-      <h2>SHOP BY BRAND</h2>
+      <h2><span class="why-word">SHOP</span> <span class="why-brand">BY</span> <span class="why-word">BRAND</span></h2>
     </div>
     <div class="brand-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
       <div class="brand-tile reveal reveal-delay-1" onclick="filterByBrand('Nike')">
@@ -280,7 +280,7 @@
   <!-- Why Sitwhem -->
   <section class="why-aged-arc">
     <div class="section-header reveal">
-      <h2>WHY SITWHEM</h2>
+      <h2><span class="why-word">WHY</span> <span class="why-brand">SITWHEM</span></h2>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal reveal-delay-1">
@@ -330,16 +330,28 @@
   <!-- Best Sellers -->
   <section class="new-arrivals" id="allProducts">
     <div class="section-header reveal">
-      <h2>BEST SELLERS</h2>
+      <h2><span class="why-word">BEST</span> <span class="why-brand">SELLERS</span></h2>
     </div>
     <div class="product-grid" id="bestSellersGrid"></div>
+  </section>
+
+  <!-- TRACKWEAR Section -->
+  <section class="new-arrivals" id="trackwear" style="background:var(--cream-alt)">
+    <div class="section-header reveal">
+      <div class="eyebrow">— PANTS &amp; SHORTS</div>
+      <h2><span class="why-word">TRACK</span><span class="why-brand">WEAR</span></h2>
+    </div>
+    <div class="product-grid" id="trackwearGrid"></div>
+    <div style="text-align:center;margin-top:32px">
+      <div class="view-all-cta reveal reveal-delay-2" onclick="scrollToSection('tshirts')">SHOP T-SHIRTS ↓</div>
+    </div>
   </section>
 
   <!-- T-SHIRTS Section -->
   <section class="new-arrivals" id="tshirts">
     <div class="section-header reveal">
       <div class="eyebrow">— TOPS &amp; TEES</div>
-      <h2>T-SHIRTS &amp; SWEATSHIRTS</h2>
+      <h2><span class="why-word">T-SHIRTS</span> <span class="why-brand">&amp; SWEATSHIRTS</span></h2>
     </div>
     <div class="product-grid" id="tshirtsGrid"></div>
     <div style="text-align:center;margin-top:32px">
@@ -351,7 +363,7 @@
   <section class="new-arrivals" id="jackets" style="background:var(--cream-alt)">
     <div class="section-header reveal">
       <div class="eyebrow">— OUTERWEAR</div>
-      <h2>JACKETS</h2>
+      <h2><span class="why-word">JACK</span><span class="why-brand">ETS</span></h2>
     </div>
     <div class="product-grid" id="jacketsGrid"></div>
     <div style="text-align:center;margin-top:32px">
@@ -377,7 +389,7 @@
   <!-- FAQ -->
   <section class="faq">
     <div class="section-header reveal">
-      <h2>FREQUENTLY ASKED</h2>
+      <h2><span class="why-word">FREQUENTLY</span> <span class="why-brand">ASKED</span></h2>
     </div>
     <div class="faq-list">
       <div class="faq-item reveal reveal-delay-1">
@@ -449,7 +461,7 @@
       <div class="footer-col">
         <h3>CATEGORIES</h3>
         <ul>
-          <li><a href="#arrivals">Trackwear</a></li>
+          <li><a href="#trackwear">Trackwear</a></li>
           <li><a href="#tshirts">T-Shirts &amp; Sweatshirts</a></li>
           <li><a href="#jackets">Jackets</a></li>
           <li><a href="#arrivals">Sports Heritage</a></li>
@@ -603,6 +615,9 @@
     </svg>
   </a>
 
+  <script src="products.js"></script>
+  <script src="stock.js"></script>
+  <script src="featured.js"></script>
   <script src="script.js"></script>
 
 </body>

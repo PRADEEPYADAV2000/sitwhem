@@ -563,6 +563,41 @@ section {
   border-bottom-color: var(--rust);
 }
 
+/* --- Sold Out State --- */
+.product-card.sold-out {
+  opacity: 0.6;
+}
+
+.product-card.sold-out .product-image img {
+  filter: grayscale(60%);
+}
+
+.sold-out-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--ink);
+  color: var(--cream);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  z-index: 5;
+}
+
+.product-sold-out-label {
+  color: var(--ink-muted);
+  cursor: default;
+  border-bottom-color: transparent !important;
+}
+
+.product-sold-out-label:hover {
+  color: var(--ink-muted) !important;
+  border-bottom-color: transparent !important;
+}
+
 /* View All CTA */
 .view-all-cta {
   display: inline-block;
@@ -845,6 +880,15 @@ section {
 /* --- Why Sitwhem --- */
 .why-aged-arc {
   background-color: var(--cream);
+}
+
+.why-word {
+  color: var(--ink);
+}
+
+.why-brand {
+  color: var(--rust);
+  -webkit-text-stroke: 1.5px var(--ink);
 }
 
 .features-grid {
